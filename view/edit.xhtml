@@ -1,0 +1,12 @@
+<form action="#{Rs(:new)}" method="post">
+	<input type="hidden" name="id" value="#{@id}" />
+	<input type="text" name="item" id="item" value="#{@item[:item]}" />
+	<select name="rating" id="rating">
+		<option value="1"#{'selected="selected"' if @item[:rating] == 1}>1</option>
+		<option value="2"#{'selected="selected"' if @item[:rating] == 2}>2</option>
+		<option value="3"#{'selected="selected"' if @item[:rating] == 3}>3</option>
+		<option value="4"#{'selected="selected"' if @item[:rating] == 4}>4</option>
+		<option value="5"#{'selected="selected"' if @item[:rating] == 5}>5</option>
+	</select>
+	<input type="submit" value="Edit" />
+</form>

@@ -1,0 +1,22 @@
+		<?r unless @items.empty? ?>
+		<table id="wishlist"> 
+			<thead> <tr> 
+			<th>WishList entry</th> 
+			<th>Name</th> 
+			<th>Rating</th> 
+		</tr> </thead> <tbody>
+		<?r
+	@items.each do |id, tags|
+		?>
+		<tr> 
+			<td>#{tags[:item]}</td> 
+			<td>#{A(tags[:user].capitalize, :href => Rs(:user, tags[:user]))}</td> 
+			<td>#{"<img src='/images/star.png' alt='*' width='16' height='16' />"*tags[:rating]}</td> 
+			<?r if tags[:user] == session[:nick] ?>
+			<td>#{A('delete', :href => Rs(:delete, id))}</td>
+			<td>#{A('edit', :href => Rs(:edit, id))}</td>
+			<?r end ?>
+		</tr>
+		<?r end ?>
+		</tbody> </table>
+		<?r end ?>

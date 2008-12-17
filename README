@@ -1,0 +1,13 @@
+A simple wishlist application.
+Released under the GPLv3
+
+Seriously, my family does use this to record their wishlists!
+
+Possible improvements:
+ * Change to using a real SQL database instead of Ramaze::Store
+ * Add password protection/OpenID support
+
+Patches are readily accepted!
+
+- Colin 'Evaryont' Shea
+

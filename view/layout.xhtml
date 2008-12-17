@@ -1,0 +1,123 @@
+
+<html>
+	<head>
+		<title>WishList</title>
+		<style>
+body, html {
+	background-attachment: fixed;
+	background-image: url(/images/winter_background.jpg);
+	background-repeat: no-repeat;
+	color: white;
+}
+
+#wishlist thead, #wishlist thead tr, #wishlist thead tr th {
+	background-color: #4b8bf8;
+}
+/* #wishlist tbody tr td {
+	width: 2em;
+} */
+#wishlist {
+	text-align: center;
+	margin: 0 auto;
+}
+
+a {
+	color: white;
+}
+a:visited {
+	color: light-grey;
+}
+a:hover {
+	font-style: italic;
+}
+
+
+#header {
+	height: 260px;
+	background-image: url('/images/gift-box.png');
+	background-repeat: no-repeat;
+	padding-left: 250px;
+	padding-top: 5px;
+}
+
+#header h4 {
+/*	display: inline; */
+}
+
+#logged {
+	background-image: url('/images/black_tube_bg.png');
+	background-repeat: repeat-x;
+	display: inline-block;
+	height: 45px;
+	padding-top: 10px;
+	float: right;
+}
+
+.tube-left {
+	background: transparent url('/images/black_tube_right.png') no-repeat scroll right top;
+	padding-right: 17px;
+	height: 45px;
+	display: inline-block;
+}
+.tube-right {
+	background: transparent url('/images/black_tube_left.png') no-repeat scroll 0 0;
+	padding-left: 17px;
+	height: 45px;
+	display: inline-block;
+}
+
+#flash {
+	position: relative;
+	border-width: 2px;
+	border-style: solid;
+	padding: 5px 10px;
+	text-align: center;
+	display: table;
+	top: 15px;
+	padding-left: 26px;
+}
+.flash-good {
+	background: #4b4 url('/images/info.png') no-repeat scroll left center;
+	border-color: #050;
+}
+.flash-error {
+	background: #b44 url('/images/error.png') no-repeat scroll left center;
+	border-color: #500;
+}
+.flash-info {
+	background: #44b url('/images/info.png') no-repeat scroll left center;
+	border-color: #005;
+}
+
+
+		</style>
+		<link rel="shortcut icon" href="/favicon.ico" />
+	<!--	<script type="text/javascript" src="/js/jquery.js"></script> 
+		<script type="text/javascript" src="/js/jquery.tablesorter.js"></script> 
+		<script type="text/javascript">
+			$(document).ready(function() { 
+				$("#wishlist").tablesorter(); 
+			} );
+		</script>
+		<link rel="stylesheet" href="/tablesorter.blue.css" /> -->
+	</head>
+	<body>
+		<div id="header">
+			<h4>#{A('Wishlist', :href => Rs())} for the Shea family</h4>
+		<?r if session[:nick] ?>
+			<span class="tube-left"><span class="tube-right"><div id="logged">Logged #{A('in', :href => Rs(:logout))} as #{session[:nick].capitalize} | <a href="/add">New Item</a></div></span></span>
+		<?r else ?>
+			<span class="tube-left"><span class="tube-right"><div id="logged">Log #{A('in', :href => Rs(:login))}</div></span></span>
+		<?r end ?>
+		<? if flash[:info] ?>
+			<div id="flash" class="flash-info">#{flash[:info]}</div>
+			<?r flash.delete(:info) ?>
+		<? end ?>
+		<? if flash[:error] ?>
+			<div id="flash" class="flash-error">#{flash[:error]}</div>
+			<?r flash.delete(:error) ?>
+		<? end ?>
+		</div>
+	#{@content}
+</body>
+</html>
