@@ -1,7 +1,7 @@
 class MainController < Ramaze::Controller
 	layout '/layout'
 	def index
-		@items = WishList.dup
+		@items = WishList.dup.sort_by { |id, item| id } 
 	end
 
 	def new
